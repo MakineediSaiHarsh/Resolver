@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111b21">
+  <meta name="description" content="Experience Razorpay Resolve: a simulated payment timeout, a worried buyer, and a clear path to order confirmation.">
+  <title>Resolve — a little certainty goes a long way</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-8 8H5l-4 3V11.5a9 9 0 0 1 19 0Z"/><path d="M6 8h9M6 12h7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 2 8 3v6c0 5-8 10-8 10S4 16 4 11V5l8-3Z"/><path d="m8 11 3 3 5-6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="m3 3 19 9L3 21l3-9-3-9Zm3 9h16"/></symbol>
+    <symbol id="i-replay" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 2 8M4 4v6h6"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="8" cy="18" r="2"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></symbol>
+    <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3Z"/><path d="M9 8h6M9 12h6"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-bank" viewBox="0 0 24 24"><path d="m3 8 9-5 9 5H3ZM5 10v8m7-8v8m7-8v8M3 21h18"/></symbol>
+  </defs></svg>
+
+  <div class="demo-strip"><span><span class="live-dot"></span> Interactive demo</span><span>Simulated payments · accelerated timeline</span></div>
+  <main class="messenger" aria-label="Resolve payment experience">
+    <nav class="app-rail" aria-label="Application">
+      <div class="rail-logo" title="Resolve"><svg class="icon"><use href="#i-chat"/></svg></div>
+      <div class="rail-active"><svg class="icon"><use href="#i-chat"/></svg></div>
+      <div class="rail-spacer"></div>
+      <button class="icon-button" data-action="controls" aria-label="Demo controls"><svg class="icon"><use href="#i-sliders"/></svg></button>
+      <div class="buyer-avatar" title="You">Y</div>
+    </nav>
+
+    <aside class="sidebar">
+      <div class="sidebar-heading"><h1>Chats</h1><span class="small-pill">1 demo</span></div>
+      <div class="search-decoration"><svg class="icon"><use href="#i-chat"/></svg><span>Your purchase conversation</span></div>
+      <div class="chat-filters"><span class="selected">All</span><span>Business</span></div>
+      <div class="contact selected-contact">
+        <div class="merchant-avatar">t<span>&</span>l</div>
+        <div class="contact-content"><div class="contact-line"><strong>Thread & Loom</strong><span id="contact-time">now</span></div><p id="contact-preview">Your everyday, a little better.</p></div>
+        <span class="contact-dot"></span>
+      </div>
+      <div class="sidebar-story">
+        <div class="resolve-mark"><svg class="icon"><use href="#i-shield"/></svg> Resolve</div>
+        <h2>Money deducted.<br>Order uncertain.<br><em>Now what?</em></h2>
+        <p>Step into a buyer’s shoes. Watch a payment time out, then talk to Resolve while confirmation arrives.</p>
+        <div class="story-path"><span>Shop</span><span>Pay</span><span>Resolve</span></div>
+      </div>
+      <div class="sidebar-bottom"><span class="live-dot"></span><span>One conversation, through to closure.</span></div>
+    </aside>
+
+    <section class="conversation" aria-label="Thread & Loom conversation">
+      <header class="chat-header">
+        <div class="merchant-avatar">t<span>&</span>l</div>
+        <div class="header-contact"><h2>Thread & Loom <span class="verified" title="Demo merchant">✓</span></h2><p id="header-subtitle">Business account · demo</p></div>
+        <div class="header-actions"><button id="replay-button" class="text-button" disabled><svg class="icon"><use href="#i-replay"/></svg><span>Replay</span></button><button class="icon-button" data-action="controls" aria-label="Demo controls"><svg class="icon"><use href="#i-sliders"/></svg></button></div>
+      </header>
+      <div id="connection-banner" class="connection-banner" role="status" hidden></div>
+      <div id="auto-banner" class="auto-banner" hidden><span><span class="live-dot"></span><span id="auto-label">Your demo begins in a moment…</span></span><button id="start-button">Start now</button><button id="pause-button">Pause</button></div>
+      <div class="thread" id="thread">
+        <div class="date-chip">Today</div>
+        <div class="privacy-note"><svg class="icon"><use href="#i-lock"/></svg><span>A simulated conversation. Use sample information; never share a PIN or OTP.</span></div>
+        <div id="messages" class="messages" role="log" aria-live="polite" aria-relevant="additions"></div>
+        <div id="typing-indicator" class="typing-bubble" role="status" hidden><span></span><span></span><span></span><small>Resolve is checking your question</small></div>
+        <div id="experience-hint" class="experience-hint">Loading your conversation…</div>
+      </div>
+      <button id="new-messages" class="new-messages" hidden>New messages <svg class="icon"><use href="#i-chevron"/></svg></button>
+      <div id="case-card" class="case-card" hidden>
+        <div id="case-icon" class="case-icon"><svg class="icon"><use href="#i-clock"/></svg></div>
+        <div class="case-copy"><strong id="case-title">Checking payment confirmation</strong><p id="case-description">Please wait before paying again.</p></div>
+        <button id="receipt-button" class="case-button" hidden><svg class="icon"><use href="#i-receipt"/></svg><span>Receipt</span></button>
+        <button id="retry-button" class="case-button" hidden>Retry payment</button>
+        <button id="support-button" class="case-button" hidden>Get help</button>
+      </div>
+      <div id="suggestions" class="suggestions" hidden><button data-question="₹1000 was deducted. Is my money safe?">My money was deducted</button><button data-question="Should I pay again?">Should I pay again?</button><button data-question="How long will confirmation take?">How long will it take?</button></div>
+      <form id="chat-form" class="composer">
+        <div class="composer-avatar"><svg class="icon"><use href="#i-shield"/></svg></div>
+        <label class="sr-only" for="message-input">Message Resolve</label>
+        <textarea id="message-input" rows="1" maxlength="1500" placeholder="Resolve will join after your payment attempt…" disabled></textarea>
+        <button id="send-button" class="send-button" type="submit" aria-label="Send message" disabled><svg class="icon"><use href="#i-send"/></svg></button>
+      </form>
+      <footer class="chat-footer"><span id="chat-mode">Connecting to backend…</span><span>Powered by Resolve <svg class="icon"><use href="#i-shield"/></svg></span></footer>
+    </section>
+  </main>
+
+  <div id="bank-alert" class="bank-alert" role="status" hidden><div class="bank-icon"><svg class="icon"><use href="#i-bank"/></svg></div><div><div class="notification-heading"><strong>Demo bank alert</strong><span>now</span></div><h3>₹1,000 debited</h3><p>Debit alert received. Payment confirmation is still pending.</p></div><button id="dismiss-bank" class="icon-button" aria-label="Dismiss bank alert"><svg class="icon"><use href="#i-close"/></svg></button></div>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <div id="demo-cursor" class="demo-cursor" aria-hidden="true" hidden><svg viewBox="0 0 32 38"><path d="M3 2v28l8-7 6 13 5-2-6-13h11L3 2Z" fill="white" stroke="#142128" stroke-width="2"/></svg><span></span></div>
+
+  <dialog id="checkout-dialog" class="checkout-dialog" aria-labelledby="checkout-title">
+    <div class="checkout-top"><div class="checkout-merchant">t&l</div><div><span>Thread & Loom</span><h2 id="checkout-title">Complete your payment</h2></div><button id="checkout-close" class="icon-button" aria-label="Close checkout"><svg class="icon"><use href="#i-close"/></svg></button></div>
+    <div class="checkout-amount"><span>Order total</span><strong>₹1,000<span>.00</span></strong></div>
+    <div id="checkout-options"><p class="checkout-section-title">Pay with UPI</p><button class="upi-option selected-upi" type="button"><span class="upi-app">U</span><span><strong>UPI</strong><small>Google Pay, PhonePe, Paytm & more</small></span><span class="radio-selected"></span></button><div class="payment-method-muted"><svg class="icon"><use href="#i-lock"/></svg><span>Cards & netbanking</span><small>UPI demo only</small></div><p class="checkout-note">This is a simulated checkout. No payment app opens and no money moves.</p><button id="checkout-pay" class="checkout-pay">Pay ₹1,000 <svg class="icon"><use href="#i-arrow"/></svg></button></div>
+    <div id="checkout-progress" class="checkout-progress" hidden><div class="payment-spinner"></div><h3>Waiting for your bank</h3><p>Checking the payment response…</p><span>Demo UPI payment</span></div>
+    <div id="checkout-failure" class="checkout-failure" hidden><div class="failure-cross">!</div><h3>Payment could not be confirmed</h3><p id="checkout-error">The bank response timed out.</p><span>Returning to your conversation…</span></div>
+    <div class="checkout-foot"><svg class="icon"><use href="#i-lock"/></svg><span>Razorpay-style checkout · simulated</span></div>
+  </dialog>
+
+  <dialog id="controls-dialog" class="controls-dialog" aria-labelledby="controls-title">
+    <div class="dialog-heading"><div><span class="eyebrow">EXPLORE THE DEMO</span><h2 id="controls-title">A different payment story</h2></div><button class="icon-button" data-close="controls-dialog" aria-label="Close demo controls"><svg class="icon"><use href="#i-close"/></svg></button></div>
+    <p class="dialog-intro">The same conversation, with different outcomes. Every payment and notification is simulated.</p>
+    <label class="field-label" for="scenario-select">Payment scenario</label><select id="scenario-select"><option value="timeout_success">Timeout → order confirmed</option><option value="timeout_unresolved">Still uncertain → support</option><option value="actionable_failure">Insufficient funds → eligible retry</option><option value="already_paid">Already paid → earlier refund tracked</option><option value="expired_order">Expired order → retry blocked</option></select>
+    <label class="field-label" for="language-select">Starting language</label><select id="language-select"><option value="en">English</option><option value="hi">Hindi</option><option value="hinglish">Hinglish</option></select>
+    <button id="scenario-replay" class="primary-button"><svg class="icon"><use href="#i-replay"/></svg> Replay this scenario</button>
+    <div class="controls-divider"></div><label class="control-row"><span><strong>Payment evidence available</strong><small>Turn off to hold confirmation and retry.</small></span><input id="evidence-toggle" type="checkbox" checked></label><label class="control-row"><span><strong>Buyer communication enabled</strong><small>Turn off to stop Resolve’s messages.</small></span><input id="consent-toggle" type="checkbox" checked></label>
+    <p class="mode-detail" id="mode-detail">Checking AI configuration…</p><p class="controls-footnote">Demo support is prepared only. No real team is contacted.</p>
+  </dialog>
+
+  <dialog id="receipt-dialog" class="receipt-dialog" aria-labelledby="receipt-title"><div class="dialog-heading"><span class="eyebrow">THREAD & LOOM</span><button class="icon-button" data-close="receipt-dialog" aria-label="Close receipt"><svg class="icon"><use href="#i-close"/></svg></button></div><div class="receipt-check"><svg class="icon"><use href="#i-check"/></svg></div><h2 id="receipt-title">A little certainty, finally.</h2><p>Your payment is captured.<br>Your merchant order is confirmed.</p><div class="receipt-product"><img src="/assets/shirt.svg" alt="Illustration of a sage green cotton shirt"><div><strong>Everyday cotton shirt</strong><span>Quantity 1 · Sage green</span></div><strong>₹1,000</strong></div><dl id="receipt-details"></dl><div class="receipt-total"><span>Total paid</span><strong>₹1,000</strong></div><span class="receipt-demo">SIMULATED RECEIPT · NO MONEY MOVED</span><button class="primary-button" data-close="receipt-dialog">Back to conversation</button></dialog>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "resolve-sql-checks",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node check_sql.cjs"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.9"
+  }
+}
